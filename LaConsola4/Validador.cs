@@ -21,7 +21,8 @@ namespace LaConsola4
             
             do
             {
-                frase = Validador.ValidarString(" \nHola Bienvenido, Ingrese una frase");
+                Console.Clear();
+                frase = Validador.ValidarString(" \nBienvenido, Ingrese una frase");
 
                 Console.WriteLine("\n" + "Usted Escribió: " + frase);
 
