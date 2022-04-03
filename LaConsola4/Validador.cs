@@ -8,55 +8,7 @@ namespace LaConsola4
 {
     public class Validador
     {
-        public static void TeclaEnd(string mensaje)
-        {
-            
-            string opcion = mensaje;
-            ConsoleKeyInfo cki;
-            string frase;
-            Console.TreatControlCAsInput = true;
-            Console.Clear();
-
-            string pregunta;
-            
-            do
-            {
-                Console.Clear();
-                frase = Validador.ValidarString(" \nBienvenido, Ingrese una frase");
-
-                Console.WriteLine("\n" + "Usted Escribió: " + frase);
-
-                pregunta = Validador.ValidarStringSioNo("\n\n Desea escribir mas frases? " +
-                                           "\n Si esta seguro de ello escriba *" + "si" + "*" + " sin los asteriscos" +
-                                           "\n De lo contrario escriba " + "*" + "no" + "*" + " sin los asteriscos");
-
-
-            } while (pregunta != "NO");
-
-  
-            do
-            {
-                
-                cki = Console.ReadKey();
-                Console.Clear();
-                Console.WriteLine("\nUsted Presiono: ");
-                if ((cki.Modifiers & ConsoleModifiers.Alt) != 0) Console.Write("ALT+");
-                if ((cki.Modifiers & ConsoleModifiers.Shift) != 0) Console.Write("SHIFT+");
-                if ((cki.Modifiers & ConsoleModifiers.Control) != 0) Console.Write("CTL+");
-                Console.WriteLine(cki.Key.ToString());
-                Console.WriteLine(opcion);
-
-            } while (cki.Key != ConsoleKey.End);
-
-            if (cki.Key == ConsoleKey.End)
-            {
-                Console.Clear();
-                Console.WriteLine("Usted presionó la tecla " + "*" + "End" + "*" + " para salir. Hasta Luego");
-            }
-
-
-        }
-
+        
         public static string ValidarString(string mensaje)
         {
 
@@ -100,6 +52,50 @@ namespace LaConsola4
             }
             else
                 return opcion;
+        }
+
+        public static void VerNombre(string mensaje)
+        {
+
+            Console.Clear();
+            Console.WriteLine(" \n Usted ingreso la frase: " + mensaje);
+  
+        }
+
+        public static void VolverMenu()
+        {
+            Console.WriteLine("\n Presione cualquier tecla para volver al Menú ");
+            Console.ReadKey();
+        }
+
+        public static int PedirIntMenu(string mensaje, int min, int max)
+        {
+            int valor;
+            bool valido = false;
+            string mensajeMenu = "\n Ingrese un valor entre " + min + " y " + max;
+            string mensajeError = "\n El valor no puede ser vacio y tiene que estar entre el rango del Menu solicitado. ";
+
+            do
+            {
+
+                Console.WriteLine(mensaje);
+                Console.WriteLine(mensajeMenu);
+
+                if (!int.TryParse(Console.ReadLine(), out valor) || valor < min || valor > max)
+                {
+                    Console.Clear();
+                    Console.WriteLine("\n");
+                    Console.WriteLine(mensajeError);
+                }
+                else
+                {
+                    valido = true;
+                }
+
+            } while (!valido);
+
+            return valor;
+
         }
 
     }

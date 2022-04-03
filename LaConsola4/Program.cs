@@ -11,6 +11,5 @@ namespace LaConsola4
 			s.Iniciar();
 		}
 
-
 	}
 }
