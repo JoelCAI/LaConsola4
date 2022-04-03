@@ -41,7 +41,7 @@ namespace LaConsola4
 
 			do
 			{
-				Console.WriteLine("Presione la tecla " + "*" + "End" + "*" + " para salir.");
+				Console.WriteLine("\n Presione la tecla " + "*" + "End" + "*" + " para salir.");
 				cki = Console.ReadKey();
 				Console.Clear();
 				Console.WriteLine("\nUsted Presiono: ");
@@ -49,7 +49,7 @@ namespace LaConsola4
 				if ((cki.Modifiers & ConsoleModifiers.Shift) != 0) Console.Write("SHIFT+");
 				if ((cki.Modifiers & ConsoleModifiers.Control) != 0) Console.Write("CTL+");
 				Console.WriteLine(cki.Key.ToString());
-				Console.WriteLine(opcion);
+				
 
 			} while (cki.Key != ConsoleKey.End);
 
